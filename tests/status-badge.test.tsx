@@ -1,11 +1,13 @@
 import { describe, it, expect } from 'vitest';
-import { render, screen } from '@testing-library/react';
+import { render, screen } from '@testing-library/react/pure';
 import { StatusBadge } from '@/components/status-badge';
 
 describe('StatusBadge', () => {
   it('displays the status', () => {
-    render(<StatusBadge status='Approved' />);
+    const { unmount } = render(<StatusBadge status='Approved' />);
 
     expect(screen.getByText('Approved')).toBeInTheDocument();
+
+    unmount();
   });
 });
