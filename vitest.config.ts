@@ -5,16 +5,19 @@ export default defineConfig({
   esbuild: {
     jsx: 'automatic',
   },
-
   resolve: {
     alias: {
       '@': path.resolve(__dirname, '.'),
     },
   },
-
   test: {
     environment: 'jsdom',
     globals: true,
     setupFiles: ['./tests/setup.ts'],
+    environmentOptions: {
+      jsdom: {
+        url: 'http://localhost:3000',
+      },
+    },
   },
 });
